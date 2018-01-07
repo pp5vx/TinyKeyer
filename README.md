@@ -12,7 +12,9 @@ No "misteries" here, in only 244 bytes of code !
 
 * **DC Source**: 5V @ .03A ( _30ma_ )
 
-I loved to put all on **base** of my **Vibroplex Iambic Key** !
+I loved to put all on **base** of my **Vibroplex Iambic Key**
+
+( but it was **"stand alone"**, not the **ATTiny Board** on the Schematic )
 
 
 **Warning** !

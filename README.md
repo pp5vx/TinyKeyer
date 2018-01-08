@@ -19,9 +19,9 @@ I loved to put all on **base** of my **Vibroplex Iambic Key**
 
 **Warning** !
 
-* Licensed in World ( except in Brasil ): **CC BY-SA-NC 3.0**
+* Licensed in World (except in Brazil), as: **CC BY-SA-NC 3.0**
 
-* Licensed in Brazil: **©2018 - PP5VX** ( _Todos os Direitos Reservados_ )
+* Licensed **only** in Brazil, as: **©2018 - PP5VX** ( _Todos os Direitos Reservados_ )
 
 Enjoy it... ( but **NEVER FOR PROFILE** ! )
 

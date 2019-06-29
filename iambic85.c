@@ -11,45 +11,43 @@
 // Site...: www.garya.org.uk
 // =========================================================================
 // Version: 2.0b01                                  Filename: [ IAMBIC85.c ]
-// Author.: PP5VX (Bone) at pp5vx .--.-. arrl.org       Date...: 07 Jan 2018
+// Author.: PP5VX (Bone) at pp5vx .--.-. arrl.org - Date: 07 Jan 2018
 // Site...: www.qsl.net/pp5vx
 // =========================================================================
-
+// Minor Mods at: 29 Jun 2019 
 // =========================================================================
 // ==> Very brief instructions...                 ( BUT YOU MUST READ IT ! )
 // =========================================================================
 // * Speed Pot: 100K ( LIN)
 //   Center ( Viewing from rear ): To ADC1 ( Port B2 )
-//   Left   ( Viewing from rear ): To a 150K @ 1/4W, and to +B (5V DC)
-//   Right  ( Viewing from rear ): To a 30K @ 1/4W, and to GND
-// * Voltage Values: 0.535V and 2.32V ( for nominal 5V DC input )
-// * ADC Values: 27 to 118
-// * Speed Range: From about 12 wpm to about 40 wpm
-// * Note: ADC Reference is the Supply Voltage, that is allways about 5V DC
-//         But the Timing DOES NOT work properly BELOW 5V DC
-//         This gadget does not work good with Button Cell Batteries (3V DC)
+//   Left   ( Viewing from rear ): To 150K @ 1/4W and VDD 5 VDC
+//   Right  ( Viewing from rear ): To 33K  @ 1/4W and GND
+// * Voltage Values Range: 0.535V and 2.32V (for a nominal 5 VDC input)
+// * ADC1 Values (Speed Port): From 27 to 118 (read below)
+//   Speed Range with these ADC1 values are: From 12 wpm to 40 wpm
+//   The ADC1 "Reference Voltage" is the VDD Voltage (allways around 5V DC)
+//   ==> But the Timing DOES NOT work VERY STABLE **BELOW** 5 VDC !
+//   This device DOES NOT WORK with "Button Cell" Batteries (3 VDC)
 // =========================================================================
-// * Sidetone: From Port P0 to (+) of a Buzzer and from him to GND
+// * Sidetone: From Port P0 to (+) of a (Piezo) Buzzer and perhaps to GND
 // =========================================================================
-// * TX Key ( Output ): From Port P1 to a 1N4001 Diode Anode
-//                      From Diode Catode to Base of a 2N2222/BC337
-//                      Emitter: GND
-//                      Collector: To Anode of 1N4001 Diode. Catode to GND
-//                                 To onde side of a 100nF Capacitor and GND
-//                               To KEY on TX ( Input )
+// * TX Key ( Output ): From Port P1 - DIRECT - to GATE (G) of a 2N7000
+//                      Source (S) to GND, and Drain (D) to "CW Key Out"
 // =========================================================================
-// * Iambic Key: DIT  ( tip  on a TRS Stereo or P10 ) - To Port P4
-//               DASH ( ring on a TRS Stereo or P10 ) - To Port P3
+// * Iambic Key: DOT  - from (Port) P4 to TIP  of a "TRS Stereo" or P10 
+//               DASH - from (Port) P3 to RING of a "TRS Stereo" or P10
+// * Note (29 Jun 2019 ):
+//   Added a DPDT Switch (a "hardware solution") to Swap the Paddle contacts
 // =========================================================================
-// * WARNING ! **DO NOT USE** MORE THAN 5V DC ( Except for "Vin" below )
-//   Vin (on Board): Input from 7V DC to 35 V DC (for 5 V DC Output), is OK
-//   5V  (on Board): Input from 5V DC, ditto is OK
-//   USB (M3)......: Input from 5V DC, and also is OK
-// * But, this gadget DOES NOT operate with Button Cell Batteries (3V DC)
+// * WARNING ! **DO NOT USE** MORE THAN 5 VDC (except for "VIN" below)
+//   VIN (on Board): Input from 9 VDC to 16 VDC (for 5 VDC nominal output)
+//   5V  (on Board): Input from a REGULATED 5 VDC
+//   USB (M3)......: Input from a USB 5 VDC source
+// * Note (29 Jun 2019 ):
+//   ==> But USE **ONLY ONE** of above sources of DC voltage for POWERING !
 // =========================================================================
-
-// -------------------------------------------------------------------------
-// ===---> A brief warning, if you are a Programmer ( as me... ):
+//
+// * Brief WARNING for you ( if you are a Programmer, as is me... ):
 // -------------------------------------------------------------------------
 // My Programming "taste" don't believe on defaults and standard indentation
 // So NEVER use [ CTRL-T ] (on the Arduino IDE) while you are on this code !
@@ -167,4 +165,4 @@ int main (void)
 			                  break;
 		} // end SWITCH
 	} // end WHILE
-} // (c)2018 - PP5VX ( V2.0b01 - 07 Jan 2018 )
+} // (c)2018, present - PP5VX (V2.0b02 - 29 Jun 2019 )

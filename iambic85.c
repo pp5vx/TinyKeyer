@@ -2,21 +2,26 @@
 // IAMBIC85.c                                                (c)2018 - PP5VX
 // =========================================================================
 // * Title...: "An Ultra Simple Iambic Keyer with Speed Pot"
-// * Hardware: (RISC) ATTiny85 - 6012 bytes ( but with internal Bootup )
-//                    ATTiny45 - 2100 bytes ( but with internal Bootup )
+// * Hardware: (RISC) ATTiny85 - 6012 bytes (with Bootloader)
+//                    ATTiny45 - 2100 bytes (with Bootloader)
+//                    ATTiny25 - 2048 bytes (but with **NO** Bootloader)
+//                    ATTiny13 - 1024 bytes (...no Bootloader of course)
 // * Used RAM: 244 bytes (4%) - ...I am getting old for these things ! (LOL)
 // =========================================================================
 // Version: 1.0 ( 2012 )                              Filename: [ iambic.c ]
-// Author.: Gary Aylward                                Date...: 26 Dec 2012
+// Author.: Gary Aylward                                   Date: 26 Dec 2012
 // Site...: www.garya.org.uk
 // =========================================================================
 // Version: 2.0b01                                  Filename: [ IAMBIC85.c ]
-// Author.: PP5VX (Bone) at pp5vx .--.-. arrl.org - Date: 07 Jan 2018
+// Author.: PP5VX (Bone) at pp5vx .--.-. arrl.org          Date: 07 Jan 2018
 // Site...: www.qsl.net/pp5vx
 // =========================================================================
-// Minor Mods at: 29 Jun 2019 
+// Version: 2.0b02                                  Filename: [ IAMBIC85.c ]
+// Author.: PP5VX (Bone) at pp5vx .--.-. arrl.org          Date: 29 Jun 2019 
+// Added some "confort modifications" (look at new Drawing Schematic)
+// => With a lil'ingenuity you can put all this thing on an ATTiny13 !
 // =========================================================================
-// ==> Very brief instructions...                 ( BUT YOU MUST READ IT ! )
+// Briefing:                                      ( BUT YOU MUST READ IT ! )
 // =========================================================================
 // * Speed Pot: 100K ( LIN)
 //   Center ( Viewing from rear ): To ADC1 ( Port B2 )

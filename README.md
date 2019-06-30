@@ -1,6 +1,6 @@
 IAMBIC85: "An Ultra Simple Iambic Keyer with Speed Pot"
 
-* For ATTiny85 ( or ATTiny45 )
+* Now (29 Jun 2019): For ATTiny85/45/25 and for ATTiny 13 too !
 
 No "misteries" here, in only 244 bytes of code !
 
@@ -14,8 +14,7 @@ No "misteries" here, in only 244 bytes of code !
 
 I loved to put all on **base** of my **Vibroplex Iambic Key**
 
-( but it was **"stand alone"**, not the **ATTiny Board** on the Schematic )
-
+My version was done with an **ATTiny 13** (not an **ATTiny Board** as in Schematic)
 
 **Warning** !
 

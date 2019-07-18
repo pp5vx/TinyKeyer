@@ -22,6 +22,6 @@ My version was done with an **ATTiny 13** (not an **ATTiny85 Board** as in Schem
 
 * Licensed **only** in Brazil, as: **©2018 - PP5VX** ( _Todos os Direitos Reservados_ )
 
-Enjoy it... ( but **NEVER FOR PROFILE** ! )
+Enjoy it... ( but **NEVER** FOR PROFIT ! )
 
 **73/DX de PP5VX ( Bone )**

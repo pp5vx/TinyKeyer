@@ -14,7 +14,7 @@ No "misteries" here, in only 244 bytes of code !
 
 I loved to put all on **base** of my **Vibroplex Iambic Key**
 
-My version was done with an **ATTiny 13** (not an **ATTiny Board** as in Schematic)
+My version was done with an **ATTiny 13** (not an **ATTiny85 Board** as in Schematic)
 
 **Warning** !
 

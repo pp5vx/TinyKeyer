@@ -1,5 +1,5 @@
 // =========================================================================
-// IAMBIC85.c                                                (c)2018 - PP5VX
+// IAMBIC85.c                                       (c)2017, present - PP5VX
 // =========================================================================
 // * Title...: "An Ultra Simple Iambic Keyer with Speed Pot"
 // * Hardware: (RISC) ATTiny85 - 6012 bytes (with Bootloader)
@@ -21,6 +21,10 @@
 // Added some "confort modifications" (look at new Drawing Schematic)
 // => With a lil'ingenuity you can put all this thing on an ATTiny13 !
 // =========================================================================
+// Version: 3.0                                     Filename: [ IAMBIC85.c ]
+// Author.: PP5VX (Bone) at pp5vx .--.-. arrl.org          Date: 18 Jul 2019 
+// Some minor "cosmetic" corrections and use of ONLY "External Power" (5VDC)
+// =========================================================================
 // Briefing:                                      ( BUT YOU MUST READ IT ! )
 // =========================================================================
 // * Speed Pot: 100K ( LIN)
@@ -34,7 +38,7 @@
 //   ==> But the Timing DOES NOT work VERY STABLE **BELOW** 5 VDC !
 //   This device DOES NOT WORK with "Button Cell" Batteries (3 VDC)
 // =========================================================================
-// * Sidetone: From Port P0 to (+) of a (Piezo) Buzzer and perhaps to GND
+// * Sidetone: From Port P0 to (+) of a (Piezo) Buzzer and to GND
 // =========================================================================
 // * TX Key ( Output ): From Port P1 - DIRECT - to GATE (G) of a 2N7000
 //                      Source (S) to GND, and Drain (D) to "CW Key Out"
@@ -44,12 +48,10 @@
 // * Note (29 Jun 2019 ):
 //   Added a DPDT Switch (a "hardware solution") to Swap the Paddle contacts
 // =========================================================================
-// * WARNING ! **DO NOT USE** MORE THAN 5 VDC (except for "VIN" below)
-//   VIN (on Board): Input from 9 VDC to 16 VDC (for 5 VDC nominal output)
-//   5V  (on Board): Input from a REGULATED 5 VDC
-//   USB (M3)......: Input from a USB 5 VDC source
-// * Note (29 Jun 2019 ):
-//   ==> But USE **ONLY ONE** of above sources of DC voltage for POWERING !
+// * WARNING ! **DO NOT USE** MORE THAN 5 VDC INPUT
+//   VIN (on Board): Don't use this input !
+//   5V  (on Board): Use this Input from an EXTERNAL 5 VDC SUPPLY
+//   USB (M3)......: Don't use this input !
 // =========================================================================
 //
 // * Brief WARNING for you ( if you are a Programmer, as is me... ):
@@ -64,13 +66,13 @@
 
 #define dKEY_PORT	(PORTB)
 #define dSIDETONE	(PORTB0)	// Port B0: Sidetone Output
-#define dKEY		  (PORTB1)	// Port B1: TX KEY Output
+#define dKEY		(PORTB1)	// Port B1: TX KEY Output
 #define dSPEED		(PORTB2)	// Port B2: Speed Pot (Center) Input
-#define dDOT_KEY	(PORTB3)	// Port B3: Iambic Key DIT  Input
+#define dDOT_KEY	(PORTB3)	// Port B3: Iambic Key DOT  Input
 #define dDASH_KEY	(PORTB4)	// Port B4: Iambic Key DASH Input
 
 // ================================ Timer0 = Sidetone
-#define dMAX_COUNT (89)	  // Sidetone Fixed at 700 HZ
+#define dMAX_COUNT (60)	  // Sidetone: 500 HZ (a "real World" CW pitch !)
 #define dGTCCR     (0x00)
 #define dTCCR0A    (0x42)
 #define dTCCR0B    (0x03)
@@ -85,10 +87,10 @@
 #define dDIDR0  (1<<ADC1D)
 
 // ====== State Machine: States
-#define dIDLE		   0
-#define dDOT		   1
-#define dDASH		   2
-#define dWAIT_DOT	 3
+#define dIDLE	   0
+#define dDOT	   1
+#define dDASH	   2
+#define dWAIT_DOT  3
 #define dWAIT_DASH 4
 
 // ==== Function Prototype
@@ -96,13 +98,13 @@ int main(void);
 
 //===========================  Main
 int main (void)
-{ uint8_t vCount      = 0;
+{ uint8_t vCount            = 0;
 	uint8_t vThisState  = dIDLE;
 	uint8_t vNextState  = dIDLE;
 	uint8_t vTimerCount = dWPM_COUNT;
   uint8_t vPotValue;
 	DDRB  = 1 << dKEY;                          // Set KEY Pin Output
-	PORTB = (1 << dDOT_KEY) | (1 << dDASH_KEY);	// Set Pullup Resistors
+	PORTB = (1 << dDOT_KEY) | (1 << dDASH_KEY); // Set Pullup Resistors
 
 	// =========== Timer0 allways generate a 700Hz Tone on OC0A (Pin 5)
   //             But outout it only when as required !
@@ -138,8 +140,8 @@ int main (void)
 					               PORTB |= (1 << dKEY);
 					               vCount++;
 					               if (vCount >= 3) { vNextState = dWAIT_DASH;
-						                                vCount = 0;
-						                              }
+						                          vCount = 0;
+						                        }
 					                                else vNextState = dDASH;
                          break;
 				case dWAIT_DOT:  DDRB  &= ~(1 << dSIDETONE);
@@ -153,9 +155,9 @@ int main (void)
 
 		// =========================================================== Speed Change
 		if ((ADCSRA & (1 << ADIF)) == (1 << ADIF))  // Convert ADC Value and Update
-		{ vPotValue = ADCH;				                  // ADC Rresult
-			vTimerCount = 256 - vPotValue;	          // New Timer Value
-			ADCSRA |= (1 << ADIF);			              // Restart ADC
+		{ vPotValue = ADCH;			    // ADC Rresult
+			vTimerCount = 256 - vPotValue;	    // New Timer Value
+			ADCSRA |= (1 << ADIF);		    // Restart ADC
 		}
 		// ================================= Poll Key Inputs: Idle or a Wait State
 		switch (vThisState)
@@ -170,4 +172,4 @@ int main (void)
 			                  break;
 		} // end SWITCH
 	} // end WHILE
-} // (c)2018, present - PP5VX (V2.0b02 - 29 Jun 2019 )
+} // (c)2017, present - PP5VX (V3.0 - 2019 Jul 18 )

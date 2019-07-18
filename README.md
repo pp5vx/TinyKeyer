@@ -1,6 +1,6 @@
 IAMBIC85: "An Ultra Simple Iambic Keyer with Speed Pot"
 
-* Now (29 Jun 2019): For ATTiny85/45/25 and for ATTiny 13 too !
+* At 2019 Jun 29: Now for **ALL** ATTiny85 (45/25 and for a 13, too !)
 
 No "misteries" here, in only 244 bytes of code !
 
@@ -8,9 +8,13 @@ No "misteries" here, in only 244 bytes of code !
 
 * **Iambic Mode**: Iambic "B" ( Yep ! Accu Keyer, you bet... )
 
-* **Sidetone**: 700 HZ ( _fixed_ )
+* **Sidetone**: 500 HZ (_fixed_)
+
+=> At 2019 Jul 18: Changed to 500 HZ pitch (that's more "real World" CW !)
 
 * **DC Source**: 5V @ .03A ( _30ma_ )
+
+=> At 2019 Jul 18: Using an **external** 78L05 (better Speed Pot range)
 
 I loved to put all on **base** of my **Vibroplex Iambic Key**
 
@@ -22,6 +26,8 @@ My version was done with an **ATTiny 13** (not an **ATTiny85 Board** as in Schem
 
 * Licensed **only** in Brazil, as: **©2018 - PP5VX** ( _Todos os Direitos Reservados_ )
 
-Enjoy it... ( but **NEVER** FOR PROFIT ! )
+Enjoy it... 
+
+=> At 2019 Jul 18: PSE this modest work **IS NOT** for ANY PROFIT of ANYONE IN WORLD !
 
 **73/DX de PP5VX ( Bone )**
